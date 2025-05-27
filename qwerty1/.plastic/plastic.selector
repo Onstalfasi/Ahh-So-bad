@@ -1,0 +1,4 @@
+repository "qwerty1/qwerty1@5773837386756@cloud"
+  path "/"
+    br "/main"
+    co "/main"
