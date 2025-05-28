@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 1993590533}
-  spawnInterval: 1
+  spawnInterval: 2
   ballLifeTime: 5
   minX: -8
   maxX: 8
@@ -340,11 +340,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3498867590296485380, guid: 1a2551b487aa3a34da0e0bb78ff90613, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.39
+      value: -13.55
       objectReference: {fileID: 0}
     - target: {fileID: 3498867590296485380, guid: 1a2551b487aa3a34da0e0bb78ff90613, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.42
+      value: 2.78
       objectReference: {fileID: 0}
     - target: {fileID: 3498867590296485380, guid: 1a2551b487aa3a34da0e0bb78ff90613, type: 3}
       propertyPath: m_LocalPosition.z
@@ -384,14 +384,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1438782219184735595, guid: 1a2551b487aa3a34da0e0bb78ff90613, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1993590534}
+      addedObject: {fileID: 1993590539}
   m_SourcePrefab: {fileID: 100100000, guid: 1a2551b487aa3a34da0e0bb78ff90613, type: 3}
 --- !u!1 &1993590533 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1438782219184735595, guid: 1a2551b487aa3a34da0e0bb78ff90613, type: 3}
   m_PrefabInstance: {fileID: 1736558394}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1993590534
+--- !u!114 &1993590539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -400,9 +400,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1993590533}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21bd7fc43df9129469ef2a82cc959dae, type: 3}
+  m_Script: {fileID: 11500000, guid: 0e89fa91df66cd94682bc8cc3cdbca09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newSprite: {fileID: -792567532, guid: ce95cc2f5b9c966458d789eb4b4b2654, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
