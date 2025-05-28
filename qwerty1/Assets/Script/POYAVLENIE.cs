@@ -10,53 +10,54 @@ public class BallGame : MonoBehaviour
     public float ballLifeTime = 5f;
 
     [Header("Границы спавна")]
-    public float leftBound = -8f;
-    public float rightBound = 8f;
-    public float bottomBound = -4f;
-    public float topBound = 4f;
+    public float minX = -8f;
+    public float maxX = 8f;
+    public float minY = -4f;
+    public float maxY = 4f;
+
+    private List<GameObject> activeBalls = new List<GameObject>();
+    public static BallGame Instance { get; private set; }
 
     void Start()
     {
-        // Проверяем, чтобы префаб был назначен
-        if (ballPrefab == null)
-        {
-            Debug.LogError("Не назначен префаб шарика!");
-            return;
-        }
 
         // Запускаем спавн шариков
         InvokeRepeating("SpawnBall", 0f, spawnInterval);
     }
 
+    IEnumerator SpawnBallsContinuously()
+    {
+        while (true) // Бесконечный цикл
+        {
+            SpawnBall();
+            yield return new WaitForSeconds(spawnInterval);
+        }
+    }
+
     void SpawnBall()
     {
-        // Создаем рандомную позицию в границах экрана
         Vector3 spawnPos = new Vector3(
-            Random.Range(leftBound, rightBound),
-            Random.Range(bottomBound, topBound),
+            Random.Range(minX, maxX),
+            Random.Range(minY, maxY),
             0
         );
 
-        // Создаем шарик
-        GameObject ball = Instantiate(ballPrefab, spawnPos, Quaternion.identity);
+        GameObject newBall = Instantiate(ballPrefab, spawnPos, Quaternion.identity);
+        activeBalls.Add(newBall);
 
-        // Добавляем коллайдер (если его нет)
-        if (ball.GetComponent<Collider2D>() == null)
-        {
-            ball.AddComponent<CircleCollider2D>();
-        }
+        // Автоматически добавляем компоненты если их нет
+        if (newBall.GetComponent<Collider2D>() == null)
+            newBall.AddComponent<CircleCollider2D>();
 
-        // Уничтожаем через заданное время
-        Destroy(ball, ballLifeTime);
+        if (newBall.GetComponent<BallController>() == null)
+            newBall.AddComponent<BallController>().Initialize(ballLifeTime);
     }
-}
 
-// Добавляем этот компонент автоматически к каждому шарику
-public class BallController : MonoBehaviour
-{
-    void OnMouseDown()
+    // Удаляем шарик из списка когда он уничтожается
+    public void RemoveBall(GameObject ball)
     {
-        Destroy(gameObject);
-        // Можно добавить звук: AudioSource.PlayClipAtPoint(popSound, transform.position);
+        activeBalls.Remove(ball);
     }
 }
+
+    
