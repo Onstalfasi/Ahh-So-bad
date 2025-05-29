@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BallGame : MonoBehaviour
 {
@@ -20,9 +22,9 @@ public class BallGame : MonoBehaviour
 
     void Start()
     {
-
         // Запускаем спавн шариков
         InvokeRepeating("SpawnBall", 0f, spawnInterval);
+
     }
 
     IEnumerator SpawnBallsContinuously()

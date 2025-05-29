@@ -235,7 +235,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 8.681213}
+  m_AnchoredPosition: {x: 0.000061035156, y: 8.681152}
   m_SizeDelta: {x: -0.00024414062, y: 17.36206}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &180885389
@@ -651,6 +651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1121526277}
   - component: {fileID: 1121526278}
+  - component: {fileID: 1121526279}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -692,6 +693,19 @@ MonoBehaviour:
   maxX: 180
   minY: -90
   maxY: 90
+--- !u!114 &1121526279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121526275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7bc9622a6016164d8975c3ed9ee9210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 88786389}
 --- !u!1001 &1736558394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -770,6 +784,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1438782219184735595, guid: 1a2551b487aa3a34da0e0bb78ff90613, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1993590544}
+    - targetCorrespondingSourceObject: {fileID: 1438782219184735595, guid: 1a2551b487aa3a34da0e0bb78ff90613, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1993590550}
   m_SourcePrefab: {fileID: 100100000, guid: 1a2551b487aa3a34da0e0bb78ff90613, type: 3}
 --- !u!1 &1993590533 stripped
 GameObject:
@@ -803,6 +820,19 @@ MonoBehaviour:
   _data:
     _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
+--- !u!114 &1993590550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993590533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff2b97192f0cf740aecc2c23acf69f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

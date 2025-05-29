@@ -1,59 +1,29 @@
 using UnityEngine;
-using System.IO;
-using System;
-
-[Serializable]
-public class GameData
-{
-    public int score;
-}
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    private GameData gameData;
-    private string savePath;
+    public Text scoreText; // Ссылка на UI-текст для отображения очков
+    private int score = 0; // Текущее количество очков
 
-    void Start()
+    private void Start()
     {
-        savePath = Path.Combine(Application.persistentDataPath, "savegame.json");
-        LoadGame();
-        UpdateScoreDisplay();
+        UpdateScoreText();
     }
 
-    public void AddScore(int amount)
+    // Метод для добавления очков
+    public void AddScore(int value)
     {
-        gameData.score += amount;
-        UpdateScoreDisplay();
-        SaveGame();
+        score += value;
+        UpdateScoreText();
     }
 
-    private void LoadGame()
+    // Обновляем текст счёта
+    private void UpdateScoreText()
     {
-        if (File.Exists(savePath))
+        if (scoreText != null)
         {
-            string json = File.ReadAllText(savePath);
-            gameData = JsonUtility.FromJson<GameData>(json);
+            scoreText.text = "Очки: " + score;
         }
-        else
-        {
-            gameData = new GameData();
-            gameData.score = 0;
-        }
-    }
-
-    private void SaveGame()
-    {
-        string json = JsonUtility.ToJson(gameData);
-        File.WriteAllText(savePath, json);
-    }
-
-    private void UpdateScoreDisplay()
-    {
-        // Обновление UI
-    }
-
-    void OnApplicationQuit()
-    {
-        SaveGame();
     }
 }
