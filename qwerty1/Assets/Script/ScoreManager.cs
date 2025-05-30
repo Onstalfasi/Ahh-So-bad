@@ -4,7 +4,21 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     public Text scoreText;
-    private int score = 0;
+    public int score = 0;
+
+    public static ScoreManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -17,13 +31,15 @@ public class ScoreManager : MonoBehaviour
         score += value;
         UpdateScoreText();
         SaveScore();
+
+        LevelManager.Instance?.UpdateUI();
     }
 
     private void UpdateScoreText()
     {
         if (scoreText != null)
         {
-            scoreText.text = "Очки: " + score;
+            scoreText.text = "Очки: " + score.ToString();
         }
     }
 
