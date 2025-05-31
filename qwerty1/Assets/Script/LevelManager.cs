@@ -148,4 +148,11 @@ public class LevelManager : MonoBehaviour
         FindObjectOfType<ChapterButtons>()?.UpdateChapterButtons();
         Debug.Log($"Level {levelIndex} unlocked via ad");
     }
+
+    public void ResetLevelProgress()
+    {
+        currentLevel = 0;
+        SaveLevelProgress();
+    }
+
 }
