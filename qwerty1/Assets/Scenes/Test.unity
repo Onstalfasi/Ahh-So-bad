@@ -689,8 +689,8 @@ MonoBehaviour:
   ballPrefab: {fileID: 1993590533}
   spawnInterval: 1
   ballLifeTime: 5
-  minX: -180
-  maxX: 180
+  minX: -200
+  maxX: 200
   minY: -90
   maxY: 90
 --- !u!114 &1121526279
@@ -706,6 +706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 88786389}
+  score: 0
 --- !u!1001 &1736558394
 PrefabInstance:
   m_ObjectHideFlags: 0
