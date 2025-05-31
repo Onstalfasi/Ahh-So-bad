@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class LevelManager : MonoBehaviour
 {
@@ -39,6 +40,20 @@ public class LevelManager : MonoBehaviour
         }
 
         LoadLevelProgress();
+
+        if (YandexGame.Instance != null)
+        {
+            YandexGame.RewardVideoEvent += OnRewardedAdWatched;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // Отписываемся от событий при уничтожении объекта
+        if (YandexGame.Instance != null)
+        {
+            YandexGame.RewardVideoEvent -= OnRewardedAdWatched;
+        }
     }
 
     private void Start()
@@ -109,5 +124,28 @@ public class LevelManager : MonoBehaviour
         {
             currentLevel = PlayerPrefs.GetInt("CurrentLevel");
         }
+    }
+
+    public void TryAccessLevelWithAd(int levelIndex)
+    {
+        if (levelIndex < 0 || levelIndex >= levelAccessCosts.Length) return;
+
+        // Проверяем, инициализирован ли Yandex SDK
+        if (YandexGame.Instance != null)
+        {
+            // Показываем рекламу с вознаграждением
+            YandexGame.RewVideoShow(levelIndex); // Передаем index уровня как параметр
+        }
+        else
+        {
+            Debug.LogWarning("Yandex SDK not initialized!");
+        }
+    }
+
+    public void OnRewardedAdWatched(int levelIndex)
+    {
+        // Разблокируем уровень без списания очков
+        FindObjectOfType<ChapterButtons>()?.UpdateChapterButtons();
+        Debug.Log($"Level {levelIndex} unlocked via ad");
     }
 }
